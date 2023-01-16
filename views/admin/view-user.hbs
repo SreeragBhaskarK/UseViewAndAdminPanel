@@ -1,0 +1,53 @@
+<section>
+    <div class="container mt-5">
+        <table class="table mt-5" id="productsTable">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each userView}}
+                <tr>
+                    <td></td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.email}}</td>
+                    <td>
+                        <a href="/admin/delete-userView/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you want to delete {{this.name}} ?')">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        var t = $('#productsTable').DataTable({
+            columnDefs: [
+                {
+                    searchable: false,
+                    orderable: false,
+                    targets: 0,
+                },
+            ],
+            order: [[1, 'asc']],
+        });
+
+        t.on('order.dt search.dt', function () {
+            let i = 1;
+
+            t.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+                this.data(i++);
+            });
+        }).draw();
+    });
+</script>
