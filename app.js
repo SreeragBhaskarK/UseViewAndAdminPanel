@@ -7,7 +7,6 @@ var hbs = require('express-handlebars')
 var fileUpload = require('express-fileupload')
 var db = require('./config/connection')
 var session = require('express-session')
-const MemoryStore = require('memorystore')(session)
 const nocache = require("nocache");
 
 
@@ -30,10 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
 app.use(session({
   secret: "Key", cookie: { maxAge: 1000 * 60 * 60 },
-  store: new MemoryStore({
-    checkPeriod: 86400000
-  }),
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }))
 app.use(nocache());
