@@ -5,7 +5,7 @@ const state={
 }
 
 module.exports.connect=function(done){
-    const url = "mongodb://127.0.0.1:27017"
+    const url = "mongodb+srv://sreerag:<password>@cluster0.nbvlgji.mongodb.net/?retryWrites=true&w=majority"
     const dbname= 'shopping'
 
     mongoClient.connect(url,(err,data)=>{
