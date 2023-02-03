@@ -21,7 +21,10 @@ router.get('/', function (req, res, next) {
 
     res.render('user/view-products', { products, user })
 
-  })
+  }).catch((error) => {
+    assert.isNotOk(error,'Promise error');
+    done();
+  });
 
 });
 
