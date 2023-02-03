@@ -29,7 +29,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
 app.use(session({
-  secret: "Key", cookie: { maxAge: 1000 * 60 * 60 },
+  secret: "Key", 
+  cookie: { maxAge: 1000 * 60 * 60 },
   store:new MemoryStore(),
   resave: false,
   saveUninitialized: true
