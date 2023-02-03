@@ -8,6 +8,7 @@ var fileUpload = require('express-fileupload')
 var db = require('./config/connection')
 var session = require('express-session')
 const nocache = require("nocache");
+const MemoryStore = require('memorystore')(session)
 
 
 var indexRouter = require('./routes/index');
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
 app.use(session({
   secret: "Key", cookie: { maxAge: 1000 * 60 * 60 },
+  store:new MemoryStore(),
   resave: false,
   saveUninitialized: true
 }))
