@@ -12,8 +12,8 @@ module.exports={
     },
     deleteUserView: (userId) => {
         
-        return new Promise((resolve, reject) => {
-            db.get().collection(collection.USER_COLLECTION).deleteOne({_id:objectId(userId)}).then((response) => {
+        return new Promise(async(resolve, reject) => {
+            await db.get().collection(collection.USER_COLLECTION).deleteOne({_id:objectId(userId)}).then((response) => {
                 resolve(response)
             })
         })
