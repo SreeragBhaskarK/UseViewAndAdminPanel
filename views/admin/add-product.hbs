@@ -5,24 +5,29 @@
                 <h2>Add Product</h2>
                 <form action="/admin/add-product" enctype="multipart/form-data" method="POST">
                     <label for="">Product Name</label><br>
-                    <input type="text" placeholder="Product Name" name="Name" class="form-control">
+                    <input type="text" placeholder="Product Name" name="Name" class="form-control" required>
 
 
                     <label for="">Product Description</label><br>
-                    <input type="text" placeholder="Product Description" name="Description" class="form-control">
+                    <input type="text" placeholder="Product Description" name="Description" class="form-control"
+                        required>
 
                     <label for="">Product Price</label><br>
-                    <input type="text" placeholder="Product Price" name="Price" class="form-control">
-
-
+                    <input type="text" placeholder="Product Price" name="Price" class="form-control" required>
                     <label for="">Product Category</label><br>
-                    <input type="text" placeholder="Product Category" name="Category" class="form-control">
+                    <select class="form-select" aria-label="Default select example" name="Category" required>
+                        <option selected>Product Category</option>
+                        <option value="Smartphone">Smartphone</option>
+                        <option value="Laptop">Laptop</option>
+                    </select>
+
+                    {{!-- <input type="text" placeholder="Product Category" name="Category" class="form-control" required> --}}
 
                     <label for="">Product Image</label><br>
 
                     <img src="/product-images/{{product._id}}.jpg" id="imgView" class="pt-3 pb-3" alt=""
                         style="width: 100px; height:auto;">
-                    <input type="file" class="form-control" name="Image" onchange="viewImage(event)"><br>
+                    <input type="file" class="form-control" name="Image" onchange="viewImage(event)" required><br>
 
                     <button type="submit">Submit</button>
 
