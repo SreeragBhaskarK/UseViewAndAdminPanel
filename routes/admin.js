@@ -176,10 +176,17 @@ router.get('/all-user', (req, res) => {
 
 
 router.get('/delete-userView/:id', (req, res) => {
-
   let userId = req.params.id
   userViewHelpers.deleteUserView(userId).then((response) => {
+    console.log(response.deletedCount);
+    if(response.deletedCount==1){
+    req.session.user = null
+    req.session.userLoggedIn = false
+    console.log(response)
+
+    }
     res.redirect('/admin/all-user')
+    
   })
 
 })
